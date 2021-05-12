@@ -54,6 +54,7 @@ phases:
 artifacts:
   files:
     - target/table-lock-test-0.0.1-SNAPSHOT.jar
+    - appspec.yml
     # - location
     # - location
     #name: $(date +%Y-%m-%d)

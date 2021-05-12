@@ -56,7 +56,7 @@ artifacts:
     - target/*.jar
     - scripts/*.sh
     - appspec.yml
-    discard-paths: yes
+  discard-paths: yes
     # - location
     # - location
     #name: $(date +%Y-%m-%d)

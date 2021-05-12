@@ -36,7 +36,7 @@ phases:
       # - command
   build:
     commands:
-      - mvn clean install
+      - mvn install
       # - command
       # - command
       #post_build:

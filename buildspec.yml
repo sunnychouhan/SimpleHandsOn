@@ -53,8 +53,10 @@ phases:
     #file-format: JunitXml | CucumberJson
 artifacts:
   files:
-    - target/table-lock-test-0.0.1-SNAPSHOT.jar
+    - target/*.jar
+    - scripts/*.sh
     - appspec.yml
+    discard-paths: yes
     # - location
     # - location
     #name: $(date +%Y-%m-%d)

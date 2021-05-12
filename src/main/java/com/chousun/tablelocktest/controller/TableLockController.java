@@ -3,6 +3,7 @@ package com.chousun.tablelocktest.controller;
 import com.chousun.tablelocktest.model.entity.SharedLockHolder;
 import com.chousun.tablelocktest.repo.SharedLockeHolderRepo;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.LockOptions;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
@@ -23,6 +24,7 @@ import static java.util.Objects.nonNull;
 
 @RestController
 @AllArgsConstructor
+@Slf4j
 public class TableLockController {
 
     SharedLockeHolderRepo sharedLockeHolderRepo;
@@ -46,7 +48,7 @@ public class TableLockController {
     @GetMapping("/getTableStatus1/{node}/{pk}")
     @Transactional
     public String getTableStatus1(@PathVariable String node, @PathVariable Long pk) throws InterruptedException {
-        System.out.println("/getTableStatus1/" + node + "/" + pk);
+        log.info("/getTableStatus1/" + node + "/" + pk);
         //https://vladmihalcea.com/database-job-queue-skip-locked/
 
         try {
@@ -72,12 +74,12 @@ public class TableLockController {
 
 
             Thread.sleep(3000);
-            System.out.println(Thread.currentThread().getName() + " : Thread Sleeping for 3 second");
+            log.info(Thread.currentThread().getName() + " : Thread Sleeping for 3 second");
             result.setLockedAt(LocalDateTime.now());
             result.setLockedBy(node);
             em.persist(result);
         } catch (LockTimeoutException exception) {
-            System.out.println("exception = " + exception);
+            log.info("exception = " + exception);
             return "Retry Already In Progress";
 
         }

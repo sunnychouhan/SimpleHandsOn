@@ -2,8 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    #destination: /home/ec2-user
-    destination: /home/ubuntu
+    destination: /home/ec2-user
 hooks:
   AfterInstall:
     - location: fix_previleges.sh

@@ -30,6 +30,7 @@ public class TableLockController {
 
     @GetMapping("/getTableStatus")
     public List<SharedLockHolder> getTableStatus() throws InterruptedException {
+         log.info("getTableStatus");
         List<SharedLockHolder> all = sharedLockeHolderRepo.fetchAll();
         SharedLockHolder build = SharedLockHolder.builder()
                 .lockedAt(LocalDateTime.now())

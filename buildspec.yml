@@ -30,18 +30,19 @@ phases:
       #commands:
       # - command
       # - command
-      #pre_build:
-      #commands:
-      # - command
+    pre_build:
+      commands:
+       - echo pre_build completed
       # - command
   build:
     commands:
+      - echo enter the build command phase
       - mvn install
       # - command
       # - command
-      #post_build:
-      #commands:
-      # - command
+  post_build:
+      commands:
+       - echo post_build completed
       # - command
       #reports:
       #report-name-or-arn:
